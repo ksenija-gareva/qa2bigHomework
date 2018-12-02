@@ -18,7 +18,7 @@ public class BaseFunc {
         driver.manage().window().maximize();
     }
 
-    public void GoToPage(String url) {
+    public void goToPage(String url) {
         if (!url.contains("http://") && !url.contains("https://")) {
             url = "http://" + url;
         }
