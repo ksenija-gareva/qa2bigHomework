@@ -17,4 +17,20 @@ public class CurrencyPage {
     public void getDelfiDate(String text) {
         baseFunc.getElement(DELFI_DATE).getAttribute(text);
     }
+
+    public void selectCurrencyType(String currency) {
+        baseFunc.selectFromDropdown(DROPDOWN_CURRENCY, currency);
+    }
+
+    public void selectHowToConvert(String convertion) {
+        baseFunc.selectFromDropdown(DROPDOWN_HOW, convertion);
+    }
+
+    public void inputSumma(String text) {
+        baseFunc.sendKey(SUMMA, text);
+    }
+
+    public void clickConvertButton() {
+        baseFunc.getElement(SUMBIT_BTN).click();
+    }
 }

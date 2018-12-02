@@ -16,4 +16,16 @@ public class BankPage {
     public void getBankPageDate(String text) {
         baseFunc.getElement(BANK_DATE).getAttribute(text);
     }
+
+    public void selectCurrencyType(String currency) {
+        baseFunc.selectFromDropdown(DROPDOWN, currency);
+    }
+
+    public void inputSumma(String summa) {
+        baseFunc.sendKey(SUMMA, summa);
+    }
+
+    public void clickConvertButton() {
+        baseFunc.getElement(CONVERT_BTN).click();
+    }
 }
