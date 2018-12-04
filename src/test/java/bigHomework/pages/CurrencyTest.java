@@ -10,15 +10,11 @@ public class CurrencyTest {
         @Test
         public void checkDate() {
             baseFunc.goToPage(DELFI_PAGE);
-            baseFunc.goToPage(BANK_PAGE);
+//            baseFunc.goToPage(BANK_PAGE);
 
             HomePage homePage = new HomePage(baseFunc);
+            homePage.acceptCookies();
             homePage.getCurrencyTab("Валюта");
 
-            BankPage bankPage = new BankPage(baseFunc);
-            bankPage.getBankPageDate("02.12.2018");
-
-            CurrencyPage currencyPage = new CurrencyPage(baseFunc);
-            currencyPage.getDelfiDate("2018-12-02");
         }
 }
