@@ -8,10 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BaseFunc {
 
@@ -19,8 +16,8 @@ public class BaseFunc {
 
     public BaseFunc() {
 //        System.setProperty("webdriver.gecko.driver", "/Users/ksenijagareva/Desktop/QA/geckodriver");
-        System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
 //        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
@@ -39,7 +36,6 @@ public class BaseFunc {
     public WebElement getElement(By locator) {
         Assertions.assertFalse(driver.findElement(locator).isDisplayed(), "There are no such element!");
         return driver.findElement(locator);
-
     }
 
     public void waitForElement(By locator) {

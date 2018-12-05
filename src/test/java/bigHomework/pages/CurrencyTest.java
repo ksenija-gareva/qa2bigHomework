@@ -10,8 +10,6 @@ public class CurrencyTest {
         @Test
         public void checkDate() {
             baseFunc.goToPage(DELFI_PAGE);
-//            baseFunc.goToPage(BANK_PAGE);
-
             HomePage homePage = new HomePage(baseFunc);
             homePage.acceptCookies();
             homePage.getCurrencyTab("Валюта");
