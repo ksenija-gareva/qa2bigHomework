@@ -15,7 +15,7 @@ public class CurrencyPage {
     }
 
     public void getDelfiDate(String text) {
-        baseFunc.getElement(DELFI_DATE).getAttribute(text);
+        baseFunc.getElement(DELFI_DATE).getAttribute("placeholder");
     }
 
     public void selectCurrencyType(String currency) {

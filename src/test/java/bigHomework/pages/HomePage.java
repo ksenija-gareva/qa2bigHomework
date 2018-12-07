@@ -8,8 +8,10 @@ import java.util.List;
 public class HomePage {
     BaseFunc baseFunc;
 
-    private By CURRENCY = By.xpath(".//a[@class='headerSeparatedNavLink']");
     private By COOKIES = By.xpath(".//a[@class='close cookie']");
+//    private By TABS = By.xpath(".//a[@class='headerSeparatedNavLink']");
+    private By TABS = By.xpath(".//nav[@class='nav ml-4']//span");
+
 
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
@@ -21,10 +23,10 @@ public class HomePage {
         baseFunc.getElement(COOKIES).click();
     }
 
-    public CurrencyPage getCurrencyTab(String title) {
-        List<WebElement> tabs = baseFunc.getElements(CURRENCY);
+    public CurrencyPage getTabByName(String name) {
+        List<WebElement> tabs = baseFunc.getElements(TABS);
         for (WebElement tab : tabs) {
-            if (tab.findElement(CURRENCY).getText().contains(title)) {
+            if (tab.findElement(TABS).getText().contains(name)) {
                 tab.click();
                 return new CurrencyPage(baseFunc);
             }

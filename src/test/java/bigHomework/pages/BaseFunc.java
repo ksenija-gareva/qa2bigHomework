@@ -34,7 +34,7 @@ public class BaseFunc {
     }
 
     public WebElement getElement(By locator) {
-        Assertions.assertFalse(driver.findElement(locator).isDisplayed(), "There are no such element!");
+        Assertions.assertFalse(getElements(locator).isEmpty(), "There are no such element!");
         return driver.findElement(locator);
     }
 

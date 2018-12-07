@@ -12,7 +12,7 @@ public class CurrencyTest {
             baseFunc.goToPage(DELFI_PAGE);
             HomePage homePage = new HomePage(baseFunc);
             homePage.acceptCookies();
-            homePage.getCurrencyTab("Валюта");
+            homePage.getTabByName("Валюта");
 
         }
 }
