@@ -39,7 +39,7 @@ public class BaseFunc {
     }
 
     public void waitForElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -49,7 +49,7 @@ public class BaseFunc {
 
     public void selectFromDropdown(By locator, String text) {
         Select dropdown = new Select(getElement(locator));
-        dropdown.selectByVisibleText(text);
+        dropdown.selectByValue(text);
     }
 
     public void closeDriver() {

@@ -3,6 +3,7 @@ package bigHomework.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage {
@@ -10,7 +11,8 @@ public class HomePage {
 
     private By COOKIES = By.xpath(".//a[@class='close cookie']");
 //    private By TABS = By.xpath(".//a[@class='headerSeparatedNavLink']");
-    private By TABS = By.xpath(".//nav[@class='nav ml-4']//span");
+//    private By TABS = By.xpath(".//nav[@class='nav ml-4']//span");
+    private By TABS = By.xpath(".//a[contains(@class, 'pr-1')]");
 
 
     public HomePage(BaseFunc baseFunc) {
@@ -23,15 +25,9 @@ public class HomePage {
         baseFunc.getElement(COOKIES).click();
     }
 
-    public CurrencyPage getTabByName(String name) {
+    public CurrencyPage getTabByCount() {
         List<WebElement> tabs = baseFunc.getElements(TABS);
-        for (WebElement tab : tabs) {
-            if (tab.findElement(TABS).getText().contains(name)) {
-                tab.click();
-                return new CurrencyPage(baseFunc);
-            }
-        }
-        return null;
+        tabs.get(1).click();
+        return new CurrencyPage(baseFunc);
     }
-
 }

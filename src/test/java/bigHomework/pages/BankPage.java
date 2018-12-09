@@ -8,13 +8,14 @@ public class BankPage {
     private By DROPDOWN = By.id("currency_name");
     private By SUMMA = By.id("summa");
     private By CONVERT_BTN = By.id("convert");
+    private By RESULT = By.id("currency_show");
 
     public BankPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
-    public void getBankPageDate(String text) {
-        baseFunc.getElement(BANK_DATE).getAttribute(text);
+    public void getBankPageDate() {
+        baseFunc.getElement(BANK_DATE).getAttribute("value");
     }
 
     public void selectCurrencyType(String currency) {
@@ -27,5 +28,9 @@ public class BankPage {
 
     public void clickConvertButton() {
         baseFunc.getElement(CONVERT_BTN).click();
+    }
+
+    public boolean getResult(String name) {
+       return baseFunc.getElement(RESULT).getText().contains(name);
     }
 }
