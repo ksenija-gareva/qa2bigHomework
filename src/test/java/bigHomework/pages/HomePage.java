@@ -9,11 +9,8 @@ import java.util.List;
 public class HomePage {
     BaseFunc baseFunc;
 
-    private By COOKIES = By.xpath(".//a[@class='close cookie']");
-//    private By TABS = By.xpath(".//a[@class='headerSeparatedNavLink']");
-//    private By TABS = By.xpath(".//nav[@class='nav ml-4']//span");
+    private By COOKIES = By.id("cookiePolicyAccept");
     private By TABS = By.xpath(".//a[contains(@class, 'pr-1')]");
-
 
     public HomePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;

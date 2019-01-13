@@ -8,15 +8,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class BaseFunc {
 
     WebDriver driver;
+    public static final String TODAY= "yyyy-MM-dd";
 
     public BaseFunc() {
-//        System.setProperty("webdriver.gecko.driver", "/Users/ksenijagareva/Desktop/QA/geckodriver");
-//        driver = new FirefoxDriver();
         System.setProperty("webdriver.chrome.driver", "/Users/ksenijagareva/Desktop/QA/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -50,6 +52,13 @@ public class BaseFunc {
     public void selectFromDropdown(By locator, String text) {
         Select dropdown = new Select(getElement(locator));
         dropdown.selectByValue(text);
+    }
+
+
+    public String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat simple = new SimpleDateFormat(TODAY);
+        return simple.format(cal.getTime());
     }
 
     public void closeDriver() {

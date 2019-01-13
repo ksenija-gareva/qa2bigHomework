@@ -1,6 +1,10 @@
 package bigHomework.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.sql.SQLOutput;
+import java.util.*;
 
 public class CurrencyPage {
     BaseFunc baseFunc;
@@ -8,15 +12,16 @@ public class CurrencyPage {
     private By DROPDOWN_CURRENCY = By.xpath(".//select[@name='currency']");
     private By DROPDOWN_HOW = By.xpath(".//select[@name='euro']");
     private By SUMMA = By.xpath(".//input[@name='amount']");
-    private By SUMBIT_BTN = By.xpath(".//input[contains(@class, 'currency-submit')]");
-    private By RESULT = By.xpath(".//span[@class='currency-result']");
+    private By SUMBIT_BTN = By.xpath(".//input[contains(@class, 'btn-porcelain')]");
+    private By RESULT = By.xpath(".//span[contains(@class, 'text-size-30')]");
 
     public CurrencyPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
-    public void getDelfiDate() {
-      baseFunc.getElement(DELFI_DATE).getAttribute("placeholder");
+
+    public String getDelfiDate() {
+        return baseFunc.getElement(DELFI_DATE).getAttribute("placeholder");
     }
 
     public void selectCurrencyType(String currency) {
@@ -39,4 +44,17 @@ public class CurrencyPage {
     public boolean getResult(String text) {
         return baseFunc.getElement(RESULT).getText().contains(text);
     }
+
+//    public Map<String, List> getCurrencyValues() {
+//        Map<String, List> currency = new HashMap<String, List>();
+//        List<WebElement> wValues = baseFunc.getElements(DROPDOWN_CURRENCY);
+//        List<String> values = new ArrayList<String>();
+//        for (WebElement e : wValues) {
+//            String currencyName = e.getText();
+//            values.add(currencyName);
+//
+//           currency.put(currencyName, values);
+//        }
+//        return currency;
+//    }
 }
