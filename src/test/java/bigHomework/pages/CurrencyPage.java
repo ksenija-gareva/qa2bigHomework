@@ -41,20 +41,11 @@ public class CurrencyPage {
         baseFunc.getElement(SUMBIT_BTN).click();
     }
 
-    public boolean getResult(String text) {
-        return baseFunc.getElement(RESULT).getText().contains(text);
+    public String getResult() {
+        String result = baseFunc.getElement(RESULT).getText();
+        result.replace(",", ".");
+        return result;
     }
 
-//    public Map<String, List> getCurrencyValues() {
-//        Map<String, List> currency = new HashMap<String, List>();
-//        List<WebElement> wValues = baseFunc.getElements(DROPDOWN_CURRENCY);
-//        List<String> values = new ArrayList<String>();
-//        for (WebElement e : wValues) {
-//            String currencyName = e.getText();
-//            values.add(currencyName);
-//
-//           currency.put(currencyName, values);
-//        }
-//        return currency;
-//    }
+
 }

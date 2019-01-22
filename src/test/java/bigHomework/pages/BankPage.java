@@ -2,20 +2,18 @@ package bigHomework.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WrapsElement;
+import org.openqa.selenium.support.ui.Select;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankPage {
     BaseFunc baseFunc;
     private By BANK_DATE = By.id("date2");
+    private By SELECT = By.id("currency_name");
     private By DROPDOWN = By.xpath(".//*[@id='currency_name']/option");
     private By SUMMA = By.id("summa");
     private By CONVERT_BTN = By.id("convert");
-    private By RESULT = By.id("currency_show");
+    private By RESULT = By.xpath(".//*[@id='result']");
 
     public BankPage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
@@ -40,22 +38,23 @@ public class BankPage {
         baseFunc.getElement(CONVERT_BTN).click();
     }
 
-    public boolean getResult(String name) {
-       return baseFunc.getElement(RESULT).getText().contains(name);
+    public String getResult() {
+       String result = baseFunc.getElement(RESULT).getText();
+        return result;
     }
 
-    public Map<List, List> getCurrencyValues() {
-        Map<List, List> currency = new HashMap<List, List>();
+    public void getCurrencyValues(String currencyType) {
+        baseFunc.waitForElement(DROPDOWN);
         List<WebElement> wValues = baseFunc.getElements(DROPDOWN);
-        List<String> key = new ArrayList<String>();
-        List<String> value = new ArrayList<String>();
-        for (WebElement option : wValues) {
-            key.add(option.getAttribute("value"));
+        String textToSelect = "";
+        for (WebElement we : wValues) {
+            if (we.getText().contains(currencyType)) {
+                textToSelect = we.getText();
+                break;
+            }
         }
-        for (WebElement type : wValues) {
-            value.add(type.getText());
-        }
-        currency.put(key, value);
-        return currency;
+        Select select = new Select(baseFunc.getElement(SELECT));
+        select.selectByVisibleText(textToSelect);
     }
+
 }

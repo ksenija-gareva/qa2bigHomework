@@ -13,29 +13,41 @@ public class CurrencyTest {
         @Test
         public void checkDate() {
             String today = baseFunc.now();
+
             baseFunc.goToPage(DELFI_PAGE);
             HomePage homePage = new HomePage(baseFunc);
+
             homePage.acceptCookies();
             homePage.getTabByCount();
 
             CurrencyPage currencyPage = new CurrencyPage(baseFunc);
+
             String delfiDate = currencyPage.getDelfiDate();
+
             currencyPage.selectCurrencyType("CAD");
             currencyPage.selectHowToConvert("from");
-            currencyPage.inputSumma("100");
+            currencyPage.inputSumma("66.13");
+
             currencyPage.clickConvertButton();
-            boolean delfiResult = currencyPage.getResult("CAD");
+
+            String delfiResult = currencyPage.getResult();
             Assertions.assertEquals(today, delfiDate, "Date is different");
 
             baseFunc.goToPage(BANK_PAGE);
             BankPage bankPage = new BankPage(baseFunc);
+
             String bankDate = bankPage.getBankPageDate();
-            bankPage.getCurrencyValues().containsValue("Kanādas dolārs (CAD)");
-            bankPage.inputSumma("100");
+
+            bankPage.getCurrencyValues("CAD");
+            bankPage.inputSumma("66.13");
+
             bankPage.clickConvertButton();
-            boolean bankResult = bankPage.getResult("CAD");
+
+            String bankResult = bankPage.getResult();
             Assertions.assertEquals(today, bankDate, "Date is different");
 
-            Assertions.assertFalse(delfiResult==bankResult);
+            Assertions.assertEquals(delfiResult, bankResult, "Result is different");
+
+            baseFunc.closeDriver();
         }
 }
